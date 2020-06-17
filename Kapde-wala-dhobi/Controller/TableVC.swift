@@ -25,10 +25,10 @@ class TableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let url: String
 //        print("loadAll is: \(loadAll)")
         if loadAll {
-            url = "http://kapde-wala.herokuapp.com/dhobi/all"
+            url = BASE_URL+ORDER_HISTORY
             navigationController?.navigationBar.topItem?.title = "Order History"
         } else {
-            url = "http://kapde-wala.herokuapp.com/dhobi/"
+            url = BASE_URL+PENDING_ORDERS
             navigationController?.navigationBar.topItem?.title = "Pending Orders"
         }
         AF.request(url).response { response in

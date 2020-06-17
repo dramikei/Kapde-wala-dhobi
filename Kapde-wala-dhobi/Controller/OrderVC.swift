@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class OrderVC: UIViewController {
 
@@ -67,11 +69,41 @@ class OrderVC: UIViewController {
     
 
     @IBAction func approveBtnPressed(_ sender: Any) {
+        let param: [String: String] = [
+            "enrolment": order.enrolment
+        ]
+        AF.request(BASE_URL+APPROVE_ORDER, method: .post, parameters: param).response { response in
+            let data = JSON(response.data)
+            print(data)
+            if data["status"] == "success" {
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func completeBtnPressed(_ sender: Any) {
+        let param: [String: String] = [
+            "enrolment": order.enrolment
+        ]
+        AF.request(BASE_URL+COMPLETE_ORDER, method: .post, parameters: param).response { response in
+            let data = JSON(response.data)
+            print(data)
+            if data["status"] == "success" {
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     @IBAction func rejectBtnPressed(_ sender: Any) {
+        let param: [String: String] = [
+            "enrolment": order.enrolment
+        ]
+        AF.request(BASE_URL+REJECT_ORDER, method: .post, parameters: param).response { response in
+            let data = JSON(response.data)
+            print(data)
+            if data["status"] == "success" {
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     public func setOrder(_ order: Order) {

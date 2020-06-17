@@ -13,6 +13,7 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationController?.navigationBar.topItem?.title = "Kapde Wala"
     }
 
     @IBAction func pendingOrderPressed(_ sender: UIButton) {
