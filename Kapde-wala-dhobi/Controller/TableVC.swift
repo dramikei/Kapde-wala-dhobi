@@ -14,6 +14,7 @@ class TableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
     private var loadAll: Bool = false
+    private var dataLoaded: Bool = false
     private var orders:[Order] = []
     private var ordersArray: [JSON] = []
     
@@ -22,25 +23,15 @@ class TableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
-        let url: String
-//        print("loadAll is: \(loadAll)")
-        if loadAll {
-            url = BASE_URL+ORDER_HISTORY
-            navigationController?.navigationBar.topItem?.title = "Order History"
-        } else {
-            url = BASE_URL+PENDING_ORDERS
-            navigationController?.navigationBar.topItem?.title = "Pending Orders"
-        }
-        AF.request(url).response { response in
-            guard let data = response.data else { return }
-            let json = JSON(data)
-//            print(json)
-            let ordersArray = json["orders"].arrayValue
-            self.ordersArray = ordersArray
-            for i in 0..<ordersArray.count {
-                self.extractDataFrom(ordersArray[i])
-            }
-            self.tableView.reloadData()
+        loadData()
+        dataLoaded = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !dataLoaded {
+            loadData()
         }
         
     }
@@ -70,6 +61,7 @@ class TableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let newViewController = storyboard!.instantiateViewController(withIdentifier: "orderVCID") as! OrderVC
         newViewController.setOrder(orders[indexPath.row])
+        self.dataLoaded = false
         self.navigationController?.pushViewController(newViewController, animated: true)
         
     }
@@ -94,6 +86,27 @@ class TableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                           jeansCount: data["jeans_count"].intValue)
         
         orders.append(order)
+    }
+    
+    private func loadData() {
+        orders.removeAll()
+        ordersArray.removeAll()
+        let url: String
+        if loadAll {
+            url = BASE_URL+ORDER_HISTORY
+        } else {
+            url = BASE_URL+PENDING_ORDERS
+        }
+        AF.request(url).response { response in
+            guard let data = response.data else { return }
+            let json = JSON(data)
+            let ordersArray = json["orders"].arrayValue
+            self.ordersArray = ordersArray
+            for i in 0..<ordersArray.count {
+                self.extractDataFrom(ordersArray[i])
+            }
+            self.tableView.reloadData()
+        }
     }
     
 

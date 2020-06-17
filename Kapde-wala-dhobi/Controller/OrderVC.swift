@@ -44,11 +44,11 @@ class OrderVC: UIViewController {
         
         if order.status.lowercased() == "placed" {
             completeBtn.isHidden = true
-        } else if order.status.lowercased() == "cancelled" || order.status.lowercased() == "rejected" {
-            completeBtn.isHidden = true
+        } else if order.status.lowercased() == "approved" {
             rejectBtn.isHidden = true
             approveBtn.isHidden = true
         } else {
+            completeBtn.isHidden = true
             rejectBtn.isHidden = true
             approveBtn.isHidden = true
         }
@@ -68,32 +68,34 @@ class OrderVC: UIViewController {
     }
     
 
-    @IBAction func approveBtnPressed(_ sender: Any) {
+    @IBAction func approveBtnPressed(_ sender: UIButton) {
         let param: [String: String] = [
             "enrolment": order.enrolment
         ]
-        AF.request(BASE_URL+APPROVE_ORDER, method: .post, parameters: param).response { response in
+        let url = BASE_URL+APPROVE_ORDER
+        print(url)
+        AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default).responseJSON { response in
             let data = JSON(response.data)
             print(data)
             if data["status"] == "success" {
-                self.navigationController?.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
     
-    @IBAction func completeBtnPressed(_ sender: Any) {
+    @IBAction func completeBtnPressed(_ sender: UIButton) {
         let param: [String: String] = [
             "enrolment": order.enrolment
         ]
-        AF.request(BASE_URL+COMPLETE_ORDER, method: .post, parameters: param).response { response in
+        AF.request(BASE_URL+COMPLETE_ORDER, method: .post, parameters: param, encoding: JSONEncoding.default).responseJSON { response in
             let data = JSON(response.data)
             print(data)
             if data["status"] == "success" {
-                self.navigationController?.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
-    @IBAction func rejectBtnPressed(_ sender: Any) {
+    @IBAction func rejectBtnPressed(_ sender: UIButton) {
         let param: [String: String] = [
             "enrolment": order.enrolment
         ]
