@@ -16,6 +16,7 @@
 		689A7735249AAF1600C2E905 /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689A7734249AAF1600C2E905 /* TableVC.swift */; };
 		689A7737249AAFC800C2E905 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689A7736249AAFC800C2E905 /* TableCell.swift */; };
 		689A7739249AB42500C2E905 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689A7738249AB42500C2E905 /* Order.swift */; };
+		68DF4824249AC801008E3327 /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DF4823249AC801008E3327 /* OrderVC.swift */; };
 		E39F379A904497CC96D37936 /* Pods_Kapde_wala_dhobi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44807F2E9A577F527D6CCE48 /* Pods_Kapde_wala_dhobi.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		689A7734249AAF1600C2E905 /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		689A7736249AAFC800C2E905 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
 		689A7738249AB42500C2E905 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		68DF4823249AC801008E3327 /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				689A772B249A961F00C2E905 /* LaunchScreen.storyboard */,
 				689A772E249A961F00C2E905 /* Info.plist */,
 				689A7738249AB42500C2E905 /* Order.swift */,
+				68DF4823249AC801008E3327 /* OrderVC.swift */,
 			);
 			path = "Kapde-wala-dhobi";
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68DF4824249AC801008E3327 /* OrderVC.swift in Sources */,
 				689A7739249AB42500C2E905 /* Order.swift in Sources */,
 				689A7737249AAFC800C2E905 /* TableCell.swift in Sources */,
 				689A7725249A961B00C2E905 /* MainVC.swift in Sources */,
