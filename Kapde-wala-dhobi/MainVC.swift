@@ -16,12 +16,12 @@ class MainVC: UIViewController {
     }
 
     @IBAction func pendingOrderPressed(_ sender: UIButton) {
-        let newViewController = TableVC()
+        let newViewController = storyboard!.instantiateViewController(withIdentifier: "tableVCID") as! TableVC
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     @IBAction func OrderHistoryPressed(_ sender: UIButton) {
-        let newViewController = TableVC()
+        let newViewController = storyboard!.instantiateViewController(withIdentifier: "tableVCID") as! TableVC
         newViewController.setLoadAll()
         self.navigationController?.pushViewController(newViewController, animated: true)
     }

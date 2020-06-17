@@ -10,7 +10,7 @@
         <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainVC" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainVC" customModule="Kapde_wala_dhobi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,7 @@
         <!--TableVC-->
         <scene sceneID="yNW-Pb-lYY">
             <objects>
-                <tableViewController id="uu0-9B-55Y" customClass="TableVC" customModule="Kapde_wala_dhobi" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="tableVCID" id="uu0-9B-55Y" customClass="TableVC" customModule="Kapde_wala_dhobi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="duM-eo-HVg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,6 +133,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="TCM-l3-3n5"/>
+                    <connections>
+                        <outlet property="tableView" destination="duM-eo-HVg" id="8f8-yo-nef"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3kB-0y-YUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

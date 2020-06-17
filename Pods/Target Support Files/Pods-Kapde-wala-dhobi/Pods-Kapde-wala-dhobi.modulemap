@@ -1,0 +1,6 @@
+framework module Pods_Kapde_wala_dhobi {
+  umbrella header "Pods-Kapde-wala-dhobi-umbrella.h"
+
+  export *
+  module * { export * }
+}
